@@ -1,12 +1,12 @@
 <template>
   <div class="icons">
-    <swiper :options="swiperOption">
+    <swiper :options="swiperOption" v-if="showSwiper">
       <swiper-slide v-for="(page, index) of pages" :key="index">
         <div class="icon" v-for="icon of page" :key="icon.id">
           <div class="icon-img">
             <img class="icon-img-content" :src="icon.imgUrl">
           </div>
-          <p class="icon-desc">{{icon.iconDesc}}</p>
+          <p class="icon-desc">{{icon.desc}}</p>
         </div>
       </swiper-slide>
     </swiper>
@@ -16,11 +16,14 @@
 <script>
 export default {
   name: 'HomeIcons',
+  props: {
+    list: Array
+  },
   data () {
     return {
-      iconsList: iconsList,
       swiperOption: {
-        loop: true
+        loop: true,
+        autoplay: false
       }
     };
   },
@@ -29,7 +32,7 @@ export default {
   computed: {
     pages () {
       let pages = [];
-      this.iconsList.forEach((item, index) => {
+      this.list.forEach((item, index) => {
         let page = Math.floor(index / 8);
         if (!pages[page]) {
           pages[page] = [];
@@ -37,45 +40,12 @@ export default {
         pages[page].push(item);
       });
       return pages;
+    },
+    showSwiper () {
+      return (this.list.length !== 0);
     }
   }
 };
-
-let iconsList = [
-  {
-    id: '0001',
-    imgUrl: 'https://picbed.qunarzz.com/01d2f57f920666364197a850dab859a8.png',
-    iconDesc: '热门景点'
-  }, {
-    id: '0003',
-    imgUrl: 'https://picbed.qunarzz.com/01d2f57f920666364197a850dab859a8.png',
-    iconDesc: ''
-  }, {
-    id: '0004',
-    imgUrl: 'https://picbed.qunarzz.com/01d2f57f920666364197a850dab859a8.png',
-    iconDesc: 'sdjfadlfjladfjladjfladjlfasjd'
-  }, {
-    id: '0005',
-    imgUrl: 'https://picbed.qunarzz.com/01d2f57f920666364197a850dab859a8.png',
-    iconDesc: ''
-  }, {
-    id: '0006',
-    imgUrl: 'https://picbed.qunarzz.com/01d2f57f920666364197a850dab859a8.png',
-    iconDesc: ''
-  }, {
-    id: '0007',
-    imgUrl: 'https://picbed.qunarzz.com/01d2f57f920666364197a850dab859a8.png',
-    iconDesc: ''
-  }, {
-    id: '0008',
-    imgUrl: 'https://picbed.qunarzz.com/01d2f57f920666364197a850dab859a8.png',
-    iconDesc: ''
-  }, {
-    id: '0009',
-    imgUrl: 'https://picbed.qunarzz.com/01d2f57f920666364197a850dab859a8.png',
-    iconDesc: ''
-  }
-];
 </script>
 
 <style lang="stylus" scoped>
@@ -86,6 +56,7 @@ let iconsList = [
     width 100%
     height 0
     padding-bottom 50%
+    margin-top .1rem
     .icon
       position: relative
       float left
