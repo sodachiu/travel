@@ -1,12 +1,9 @@
 <template>
   <div class="city-header">
+    城市选择
     <router-link to="/">
       <div class="iconfont city-back">&#xe624;</div>
     </router-link>
-    <div class="city-title">
-      <span>城市选择</span>
-    </div>
-
   </div>
 </template>
 
@@ -20,18 +17,15 @@ export default {
   @import "~dir_styles/variable.styl"
   .city-header
     position relative
+    text-align center
+    background-color $bgColor
+    height $headerHeight
+    line-height $headerHeight
+    color white
+    font-size .32rem
     .city-back
       position absolute
+      top 0
       color #fff
-      height $headerHeight
-      line-height $headerHeight
       margin-left .2rem
-    .city-title
-      width 100%
-      text-align center
-      color white
-      font-size .35rem
-      height $headerHeight
-      line-height $headerHeight
-      background-color $bgColor
 </style>
