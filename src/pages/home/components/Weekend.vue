@@ -26,11 +26,9 @@ export default {
 
 <style lang="stylus" scoped>
   @import "~dir_styles/mixins.styl"
+  @import "~dir_styles/variable.styl"
   .title
-    height .68rem
-    line-height .68rem
-    background-color #cacaca
-    padding-left .2rem
+    moduleTitle()
   .weekend-item
     height 2.84rem
     padding .1rem

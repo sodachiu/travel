@@ -36,7 +36,7 @@ export default {
   @import "~dir_styles/variable.styl"
   .header
     display flex
-    line-height .86rem
+    line-height $headerHeight
     background-color $bgColor
     margin-top 0
     padding 0

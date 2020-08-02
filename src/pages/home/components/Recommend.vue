@@ -27,11 +27,9 @@ export default {
 
 <style lang="stylus" scoped>
   @import "~dir_styles/mixins.styl"
+  @import "~dir_styles/variable.styl"
   .title
-    height .68rem
-    line-height .68rem
-    background-color #cacaca
-    padding-left .2rem
+    moduleTitle()
   .recommend-item
     display flex
     height 1.66rem
