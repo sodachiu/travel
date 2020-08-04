@@ -70,7 +70,7 @@ export default {
     },
     handleCityClick (city) {
       this.changeCity(city);
-      // this.$store.dispatch('changeCity', city);
+      this.keyword = '';
       this.$router.push('/');
     },
     ...mapActions(['changeCity'])
