@@ -1,14 +1,19 @@
 <template>
   <div>
     <div class="title">推荐景点</div>
-    <div class="recommend-item border-bottom" v-for="item of list" :key="item.id">
+    <router-link tag="div"
+                 :to="'/detail/' + item.id"
+                 class="recommend-item border-bottom"
+                 v-for="item of list"
+                 :key="item.id"
+    >
       <img class="recommend-img" :src="item.imgUrl" />
       <div class="recommend-info">
         <p class="recommend-title">{{item.title}}</p>
         <p class="recommend-desc">{{item.desc}}</p>
         <button class="recommend-btn">查看详情</button>
       </div>
-    </div>
+    </router-link>
   </div>
 </template>
 
@@ -21,7 +26,11 @@ export default {
   data () {
     return {};
   },
-  methods: {}
+  methods: {
+    handleItemClick (id) {
+      this.$router.push('/detail/' + id);
+    }
+  }
 };
 </script>
 
