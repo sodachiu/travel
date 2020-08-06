@@ -1,16 +1,27 @@
 <template>
   <div>
-    <detail-banner :bannerImg="bannerImg" :sightName="sightName"></detail-banner>
+    <detail-banner
+        :bannerImg="bannerImg"
+        :sightName="sightName"
+        :galleryImgs="gallaryImgs"
+    ></detail-banner>
+    <detail-header />
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+
 import DetailBanner from './components/Banner';
+import DetailHeader from './components/Header';
+import CommonFadeAnimation from 'common/animation/fade/Fade';
+
 export default {
   name: 'Detail',
   components: {
-    DetailBanner
+    DetailBanner,
+    DetailHeader,
+    CommonFadeAnimation
   },
   data () {
     return {
