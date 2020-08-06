@@ -23,7 +23,7 @@ export default {
       swiperOption: {
         pagination: '.swiper-pagination',
         paginationType: 'fraction',
-        observePatents: true,
+        observeParents: true,
         observer: true
       }
     };

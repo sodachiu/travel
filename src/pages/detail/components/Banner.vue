@@ -13,20 +13,24 @@
         </div>
       </div>
     </div>
-    <common-gallery
-        v-show="isShowSwiper"
-        :imgList="galleryImgs"
-        @close="closeGallery"
-    />
+    <fade-animation>
+      <common-gallery
+          v-show="isShowSwiper"
+          :imgList="galleryImgs"
+          @close="closeGallery"
+      />
+    </fade-animation>
   </div>
 </template>
 
 <script>
 import CommonGallery from 'common/gallery/Gallery';
+import FadeAnimation from 'common/animation/fade/Fade';
 export default {
   name: 'DetailBanner',
   components: {
-    CommonGallery
+    CommonGallery,
+    FadeAnimation
   },
   props: {
     sightName: String,
