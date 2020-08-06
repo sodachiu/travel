@@ -1,9 +1,6 @@
 <template>
   <div>
     <div class="detail-banner" @click="showSwiper">
-      <router-link tag="span"
-                   to="/"
-                   class="iconfont banner-back-icon">&#xe624;</router-link>
       <img class="banner-img" :src="bannerImg">
       <div class="banner-info">
         <div class="banner-title">{{sightName}}</div>
@@ -67,18 +64,6 @@ export default {
     width 100%
     height 0
     padding-bottom 55%
-    .banner-back-icon
-      position: absolute;
-      top .2rem
-      left .2rem
-      width .8rem
-      height .8rem
-      line-height .8rem
-      border-radius .4rem
-      background-color rgba(0, 0, 0, 0.6)
-      color white
-      text-align center
-      font-size .32rem
     .banner-img
       width 100%
     .banner-info

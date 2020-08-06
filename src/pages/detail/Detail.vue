@@ -6,6 +6,7 @@
         :galleryImgs="gallaryImgs"
     ></detail-banner>
     <detail-header />
+    <div class="content"></div>
   </div>
 </template>
 
@@ -56,6 +57,7 @@ export default {
 };
 </script>
 
-<style scoped>
-
+<style lang="stylus" scoped>
+  .content
+    height 50rem
 </style>
