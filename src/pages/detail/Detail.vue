@@ -6,7 +6,9 @@
         :galleryImgs="gallaryImgs"
     ></detail-banner>
     <detail-header />
-    <div class="content"></div>
+    <div class="content">
+      <detail-list :list="categoryList"/>
+    </div>
   </div>
 </template>
 
@@ -15,6 +17,7 @@ import axios from 'axios';
 
 import DetailBanner from './components/Banner';
 import DetailHeader from './components/Header';
+import DetailList from './components/List';
 import CommonFadeAnimation from 'common/animation/fade/Fade';
 
 export default {
@@ -22,6 +25,7 @@ export default {
   components: {
     DetailBanner,
     DetailHeader,
+    DetailList,
     CommonFadeAnimation
   },
   data () {

@@ -75,6 +75,7 @@ export default {
       text-align center
       font-size .32rem
     .header-title
+      z-index 2
       position fixed
       top 0
       width 100%
