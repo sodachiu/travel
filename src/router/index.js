@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from '@/pages/home/Home';
-import City from '@/pages/city/City';
-import Detail from '@/pages/detail/Detail';
+import Home from '../views/Home';
+import City from '../views/City';
+import Detail from '../views/Detail';
 Vue.use(Router);
 
 export default new Router({
