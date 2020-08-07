@@ -6,16 +6,16 @@
           placeholder="请输入城市或拼音"
           v-model="keyword"/>
     </div>
-    <div ref="wrapper" class="search-list" v-if="showSearchItem">
+    <div ref="wrapper" class="search-list" v-show="showSearchItem">
       <ul>
         <li class="search-item border-bottom"
             v-for="item of searchCities"
             :key="item.id"
-            @click="handleCityClick(item.name)"
+            @click.prevent="handleCityClick(item.name)"
         >
           {{item.name}}
         </li>
-        <li class="search-item border-bottom" v-if="showNoMatchItem">未找到匹配项</li>
+        <li class="search-item border-bottom" v-show="showNoMatchItem">未找到匹配项</li>
       </ul>
     </div>
   </div>
@@ -46,32 +46,16 @@ export default {
   },
   methods: {
     handleChange () {
-      this.searchCities = [];
-      if (!this.keyword) {
-        return;
-      }
+      const result = [];
       for (let key in this.cities) {
-        for (let item of this.cities[key]) {
-          if (item.spell.indexOf(this.keyword) >= 0 ||
-            item.name.indexOf(this.keyword) >= 0) {
-            this.searchCities.push(item);
+        this.cities[key].forEach((value) => {
+          if (value.spell.indexOf(this.keyword) >= 0 ||
+            value.name.indexOf(this.keyword) >= 0) {
+            result.push(value);
           }
-        }
-      }
-      if (!this.searchCities) {
-        // no match
-      }
-    },
-    createBScroll () {
-      if (!this.scroll) {
-        console.log('new scroll');
-        this.scroll = new BScroll(this.$refs['wrapper'], {
-          click: true
         });
-        this.scroll.refresh();
-      } else {
-        this.scroll.refresh();
       }
+      this.searchCities = result;
     },
     handleCityClick (city) {
       this.changeCity(city);
@@ -86,21 +70,22 @@ export default {
       if (this.timer) {
         clearTimeout(this.timer);
       }
+      if (!this.keyword) {
+        this.searchCities = [];
+        return;
+      }
       this.timer = setTimeout(() => {
         this.handleChange();
       }, 100);
     }
   },
   mounted () {
-  },
-  activated () {
-    console.log('activated');
+    this.scroll = new BScroll(this.$refs['wrapper'], {
+      click: true
+    });
   },
   deactivated () {
     this.keyword = '';
-  },
-  updated () {
-    this.createBScroll();
   },
   destroyed () {
     console.log('des');

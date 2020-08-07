@@ -61,7 +61,10 @@ export default {
       this.scroll = new BScroll(this.$refs.wrapper, {
         click: true
       });
-    } else {
+    }
+  },
+  activated () {
+    if (this.scroll) {
       this.scroll.refresh();
     }
   }

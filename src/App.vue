@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <keep-alive exclude="Detail, CitySearch">
+    <keep-alive :exclude="comp">
       <router-view/>
     </keep-alive>
   </div>
@@ -8,7 +8,15 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data () {
+    return {
+      comp: [
+        'Detail',
+        'CitySearch'
+      ]
+    }
+  }
 };
 </script>
 
